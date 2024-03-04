@@ -31,7 +31,7 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     public void Registrar (View view){
-        Administrador admin=new Administrador( this, "administracion",  null,  1);
+        Administrador admin=new Administrador( this, "administracion", null, 1);
         SQLiteDatabase BaseDeDatos= admin.getWritableDatabase();
         String nombre =nom.getText().toString();
         String apellido= ape.getText().toString();

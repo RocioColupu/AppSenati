@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,8 +13,6 @@ import android.widget.EditText;
 public class DashBoard extends AppCompatActivity {
     private EditText nom, ape, dni, usu, cla;
     private Button editar, cerrar, guardar;
-
-    private SQLiteDatabase db;
 
     private SharedPreferences sharedPreferences;
     @Override
@@ -28,13 +25,17 @@ public class DashBoard extends AppCompatActivity {
         dni = (EditText) findViewById(R.id.txtdni);
         usu = (EditText) findViewById(R.id.txtusuario);
         cla = (EditText) findViewById(R.id.txtclave);
-        editar = (Button) findViewById(R.id.btnEditar);
-        guardar = findViewById(R.id.btnActualizar);
-        cerrar = (Button) findViewById(R.id.btnRegistrar);
 
-        //Llamando los metodos
+        guardar = findViewById(R.id.btnActualizar);
+
+        editar = (Button) findViewById(R.id.btnEditar);
         editar.setOnClickListener(this::habilitarEdicion);
+
+        cerrar = (Button) findViewById(R.id.btnRegistrar);
         cerrar.setOnClickListener(this::cerrarSesion);
+
+
+        sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
 
         mostrarDatosUsuario();
 
